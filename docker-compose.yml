@@ -3,10 +3,10 @@ service: &default
   ports:
     - "8080:8080"
   links:
-    - db
+    - redis
   volumes:
-    - .:/app
+    - .:/usr/src/app
 
-db:
+redis:
   image: redis
 

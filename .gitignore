@@ -40,3 +40,7 @@ luac.out
 *.hex
 
 tmp/
+
+logs/
+nginx.conf.compiled
+stdout

@@ -1,7 +1,12 @@
 FROM erikcw/lapis
 MAINTAINER dean@shopkeep.com
 
-RUN apt-get update; apt-get -y upgrade
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-ADD . /app
-WORKDIR /app
+RUN luarocks install redis-lua
+
+COPY . /usr/src/app
+
+EXPOSE 8080
+CMD [ "server" ]

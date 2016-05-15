@@ -1,39 +1,8 @@
-local lapis = require("lapis")
+local app = require("lapis").Application()
 local json_params = require("lapis.application").json_params
-local respond_to = require("lapis.application").respond_to
-local redis = require('redis')
-local client = redis.connect('redis', 6379)
+local store_view = require('app.views.store')
 
-local app = lapis.Application()
-
-app:match("/:store_id", respond_to({
-
-  before = function(self)
-    self.store_id = self.params.store_id
-  end,
-
-  GET = function(self)
-    mappings = client:hgetall(self.store_id)
-
-    return {
-      json = {
-        data = mappings
-      }
-    }
-  end,
-
-  POST = json_params(function(self)
-    data = self.params.data
-
-    client:hmset(self.store_id, data)
-
-    return {
-      json = {
-        store_id = self.store_id,
-        data = data
-      }
-    }
-  end)
-}))
+app:get("/:store_id", store_view.get)
+app:post("/:store_id", json_params(store_view.post))
 
 return app

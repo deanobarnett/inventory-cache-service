@@ -1,13 +1,19 @@
 language: erlang
 
 env:
-  - LUA=""
-  - LUA="luajit"
+  global:
+    - $CACHE_DIR=$HOME/cache
+    - LUA=""
+    - LUA="luajit"
 
 branches:
   only:
     - master
-
+cache:
+  apt: true
+  directories:
+    - $CACHE_DIR
+  
 install:
   - sudo apt-get install build-essential
   - sudo apt-get install luajit

@@ -3,8 +3,8 @@ language: erlang
 env:
   global:
     - $CACHE_DIR=$HOME/cache
-  - LUA=""
-  - LUA="luajit"
+    - LUA=""
+    - LUA="luajit"
 
 branches:
   only:

@@ -1,10 +1,10 @@
 language: erlang
 
 env:
-  - LUA=""
-  - LUA="luajit
   global:
     - $CACHE_DIR=$HOME/cache
+  - LUA=""
+  - LUA="luajit
 
 branches:
   only:

@@ -1,2 +1,2 @@
-# inventory-cache-service
-Service for caching Inventory Information
+# Cache Service
+Small service written in Lua and using the Lapis framework to cache some `id` to `name` mappings.
